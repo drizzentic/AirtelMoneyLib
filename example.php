@@ -21,7 +21,7 @@ $airtelclient=new AirtelMoney;
  * $timeFrom=$_POST['timeFrom'];
  * $timeTo=$_POST['timeTo'];
  */
-$airtelclient->processMerchantQuery("10587825","B@Tcar2o15","1601056579194","254735316990",REQUEST1);
+$airtelclient->processMerchantQuery("","","","",REQUEST1);
 
 
 ?>
