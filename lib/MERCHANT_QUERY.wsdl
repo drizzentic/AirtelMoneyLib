@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://www.zain.com/" xmlns:s1="http://www.airtel.com/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" targetNamespace="http://www.zain.com/">
+<wsdl:types>
+<s:schema elementFormDefault="qualified" targetNamespace="http://www.zain.com/">
+<s:element name="RequestTransaction">
+<s:complexType>
+<s:sequence>
+<s:element minOccurs="0" maxOccurs="1" name="userName" type="s:string"/>
+<s:element minOccurs="0" maxOccurs="1" name="passWord" type="s:string"/>
+<s:element minOccurs="0" maxOccurs="1" name="referenceId" type="s:string"/>
+<s:element minOccurs="0" maxOccurs="1" name="msisdn" type="s:string"/>
+</s:sequence>
+</s:complexType>
+</s:element>
+<s:element name="RequestTransactionResponse">
+<s:complexType>
+<s:sequence>
+<s:element minOccurs="0" maxOccurs="1" name="RequestTransactionResult" type="tns:Response"/>
+</s:sequence>
+</s:complexType>
+</s:element>
+<s:complexType name="Response">
+<s:sequence>
+<s:element minOccurs="0" maxOccurs="1" name="Referenceld" type="s:string"/>
+<s:element minOccurs="1" maxOccurs="1" name="Status" type="s:int"/>
+<s:element minOccurs="0" maxOccurs="1" name="Msisdn" type="s:string"/>
+<s:element minOccurs="0" maxOccurs="1" name="FirstName" type="s:string"/>
+<s:element minOccurs="0" maxOccurs="1" name="LastName" type="s:string"/>
+<s:element minOccurs="1" maxOccurs="1" name="TransactionId" type="s:long"/>
+<s:element minOccurs="0" maxOccurs="1" name="PaymentDetails" type="s:string"/>
+<s:element minOccurs="1" maxOccurs="1" name="CreatedTimestamp" type="s:dateTime"/>
+<s:element minOccurs="1" maxOccurs="1" name="Amount" type="s:decimal"/>
+<s:element minOccurs="0" maxOccurs="1" name="Message" type="s:string"/>
+</s:sequence>
+</s:complexType>
+<s:element name="RequestTransactionByTimeInterval">
+<s:complexType>
+<s:sequence>
+<s:element minOccurs="0" maxOccurs="1" name="userName" type="s:string"/>
+<s:element minOccurs="0" maxOccurs="1" name="passWord" type="s:string"/>
+<s:element minOccurs="0" maxOccurs="1" name="timeFrom" type="s:string"/>
+<s:element minOccurs="0" maxOccurs="1" name="timeTo" type="s:string"/>
+</s:sequence>
+</s:complexType>
+</s:element>
+<s:element name="RequestTransactionByTimeIntervalResponse">
+<s:complexType>
+<s:sequence>
+<s:element minOccurs="0" maxOccurs="1" name="RequestTransactionByTimeIntervalResult" type="tns:RequestTransactionsResponse"/>
+</s:sequence>
+</s:complexType>
+</s:element>
+<s:complexType name="RequestTransactionsResponse">
+<s:sequence>
+<s:element minOccurs="1" maxOccurs="1" name="Status" type="s:int"/>
+<s:element minOccurs="1" maxOccurs="1" name="TotalTransactions" type="s:int"/>
+<s:element minOccurs="1" maxOccurs="1" name="TotalAmount" type="s:decimal"/>
+<s:element minOccurs="0" maxOccurs="1" name="Transactions" type="s:string"/>
+<s:element minOccurs="0" maxOccurs="1" name="Message" type="s:string"/>
+</s:sequence>
+</s:complexType>
+</s:schema>
+<s:schema elementFormDefault="qualified" targetNamespace="http://www.airtel.com/">
+<s:element name="RequestTransactionByTimeIntervalDetailed">
+<s:complexType>
+<s:sequence>
+<s:element minOccurs="0" maxOccurs="1" name="userName" type="s:string"/>
+<s:element minOccurs="0" maxOccurs="1" name="passWord" type="s:string"/>
+<s:element minOccurs="0" maxOccurs="1" name="timeFrom" type="s:string"/>
+<s:element minOccurs="0" maxOccurs="1" name="timeTo" type="s:string"/>
+</s:sequence>
+</s:complexType>
+</s:element>
+<s:element name="RequestTransactionByTimeIntervalDetailedResponse">
+<s:complexType>
+<s:sequence>
+<s:element minOccurs="0" maxOccurs="1" name="RequestTransactionByTimeIntervalDetailedResult" type="s1:RequestTransactionsResponse"/>
+</s:sequence>
+</s:complexType>
+</s:element>
+<s:complexType name="RequestTransactionsResponse">
+<s:sequence>
+<s:element minOccurs="1" maxOccurs="1" name="Status" type="s:int"/>
+<s:element minOccurs="1" maxOccurs="1" name="TotalTransactions" type="s:int"/>
+<s:element minOccurs="1" maxOccurs="1" name="TotalAmount" type="s:decimal"/>
+<s:element minOccurs="0" maxOccurs="1" name="Transactions" type="s:string"/>
+<s:element minOccurs="0" maxOccurs="1" name="Message" type="s:string"/>
+</s:sequence>
+</s:complexType>
+</s:schema>
+</wsdl:types>
+<wsdl:message name="RequestTransactionSoapIn">
+<wsdl:part name="parameters" element="tns:RequestTransaction"/>
+</wsdl:message>
+<wsdl:message name="RequestTransactionSoapOut">
+<wsdl:part name="parameters" element="tns:RequestTransactionResponse"/>
+</wsdl:message>
+<wsdl:message name="RequestTransactionByTimeIntervalSoapIn">
+<wsdl:part name="parameters" element="tns:RequestTransactionByTimeInterval"/>
+</wsdl:message>
+<wsdl:message name="RequestTransactionByTimeIntervalSoapOut">
+<wsdl:part name="parameters" element="tns:RequestTransactionByTimeIntervalResponse"/>
+</wsdl:message>
+<wsdl:message name="RequestTransactionByTimeIntervalDetailedSoapIn">
+<wsdl:part name="parameters" element="s1:RequestTransactionByTimeIntervalDetailed"/>
+</wsdl:message>
+<wsdl:message name="RequestTransactionByTimeIntervalDetailedSoapOut">
+<wsdl:part name="parameters" element="s1:RequestTransactionByTimeIntervalDetailedResponse"/>
+</wsdl:message>
+<wsdl:portType name="MerchantQueryServiceSoap">
+<wsdl:operation name="RequestTransaction">
+<wsdl:input message="tns:RequestTransactionSoapIn"/>
+<wsdl:output message="tns:RequestTransactionSoapOut"/>
+</wsdl:operation>
+<wsdl:operation name="RequestTransactionByTimeInterval">
+<wsdl:input message="tns:RequestTransactionByTimeIntervalSoapIn"/>
+<wsdl:output message="tns:RequestTransactionByTimeIntervalSoapOut"/>
+</wsdl:operation>
+<wsdl:operation name="RequestTransactionByTimeIntervalDetailed">
+<wsdl:input message="tns:RequestTransactionByTimeIntervalDetailedSoapIn"/>
+<wsdl:output message="tns:RequestTransactionByTimeIntervalDetailedSoapOut"/>
+</wsdl:operation>
+</wsdl:portType>
+<wsdl:binding name="MerchantQueryServiceSoap" type="tns:MerchantQueryServiceSoap">
+<soap:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+<wsdl:operation name="RequestTransaction">
+<soap:operation soapAction="RequestTransaction" style="document"/>
+<wsdl:input>
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="RequestTransactionByTimeInterval">
+<soap:operation soapAction="RequestTransactionByTimeInterval" style="document"/>
+<wsdl:input>
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="RequestTransactionByTimeIntervalDetailed">
+<soap:operation soapAction="RequestTransactionByTimeIntervalDetailed" style="document"/>
+<wsdl:input>
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+</wsdl:binding>
+<wsdl:binding name="MerchantQueryServiceSoap12" type="tns:MerchantQueryServiceSoap">
+<soap12:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+<wsdl:operation name="RequestTransaction">
+<soap12:operation soapAction="RequestTransaction" style="document"/>
+<wsdl:input>
+<soap12:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap12:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="RequestTransactionByTimeInterval">
+<soap12:operation soapAction="RequestTransactionByTimeInterval" style="document"/>
+<wsdl:input>
+<soap12:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap12:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="RequestTransactionByTimeIntervalDetailed">
+<soap12:operation soapAction="RequestTransactionByTimeIntervalDetailed" style="document"/>
+<wsdl:input>
+<soap12:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap12:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+</wsdl:binding>
+<wsdl:service name="MerchantQueryService">
+<wsdl:port name="MerchantQueryServiceSoap" binding="tns:MerchantQueryServiceSoap">
+<soap:address location="http://10.10.254.115:4449/MerchantQueryService.asmx"/>
+</wsdl:port>
+<wsdl:port name="MerchantQueryServiceSoap12" binding="tns:MerchantQueryServiceSoap12">
+<soap12:address location="http://10.10.254.115:4449/MerchantQueryService.asmx"/>
+</wsdl:port>
+</wsdl:service>
+</wsdl:definitions>
