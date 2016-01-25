@@ -9,7 +9,7 @@ Airtel Merchant Query API.
     - password.
     - reference id.
     - msisdn.
-  * Request Transaction by Time Interval & Request Transaction by Time Interval - Detailed.
+  * Request Transaction by Time Interval & Request Transaction by Time Interval (Detailed)
       - username.
       - password.
       - timefrom.
