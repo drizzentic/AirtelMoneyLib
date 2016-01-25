@@ -12,7 +12,7 @@ ini_set("soap.wsdl_cache_enabled", "0");
 class AirtelMoney
 {
 
-	public function processMerchantQuery($username,$password,$REFERENCE_ID,$MSISDN,$request_type){
+	public function processMerchantQuery($username,$password,$REFERENCE_ID,$MSISDN,$request_type,$timeTo,$timeFrom){
 		
 		$params = array(			
 			//'processCheckOutRequest'=>array(
@@ -23,8 +23,10 @@ class AirtelMoney
 	          	/*
 	          	Optional fields when checking by tranaction id. And note that the time interval should not exceed 24hrs
 	          	 */
-	           	'timeFrom'=>'20160115050700', 
-	            'timeTo'=>'20160115110700',
+	          	// Time should be in this format and within the last 24 hrs 20160115050700
+	          	
+	           	'timeFrom'=>$timeFrom,
+	            'timeTo'=>$timeTo,
 			//	)
             
             );
@@ -37,6 +39,7 @@ class AirtelMoney
 			            'ssl' => array(
 			                'verify_peer'       => false,
 			                'verify_peer_name'  => false,
+			                'ciphers'=>'RC4-SHA',
             		)
        
         			)
@@ -53,7 +56,8 @@ class AirtelMoney
 	}
 
 	function processResponse($responseData){
-
+		//Process database response. Insert Items into the database
+		
 		return json_encode($responseData);
 	}
 
