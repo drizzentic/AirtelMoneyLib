@@ -5,7 +5,7 @@ Airtel Merchant Query API.
 ##Overview
   * [Features](#features)
   * [Contributors](#contributors)
-#Features
+###Features
   * ####Request Transaction
   This method is used to query a particular transaction’s details. The method accepts the following parameters.
     - username
@@ -17,7 +17,7 @@ Airtel Merchant Query API.
       - password
       - timefrom
       - timeto
-#Contributors
+###Contributors
     Derrick Rono
     Joseph Mokaya
 
