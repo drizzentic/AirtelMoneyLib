@@ -8,8 +8,8 @@
  * Constants for authentication
  */
 define("MSISDN",''); 
-define("USERNAME", ''); //Put the passkey provided for SAG access
-define("PASSWORD", ''); //Put the passkey provided for SAG access
+define("USERNAME", ''); //Put the username provided by airtel
+define("PASSWORD", ''); //Put the password
 define("URL", "https://41.223.56.58:44433/MerchantQueryService.asmx?wsdl"); //Put the api endpint.
 define('REQUEST1','RequestTransaction');
 define('REQUEST2','RequestTransactionByTimeInterval');
