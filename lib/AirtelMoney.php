@@ -12,12 +12,8 @@ ini_set("soap.wsdl_cache_enabled", "0");
 class AirtelMoney
 {
 
-	public function processMerchantQuery($username,$password,$REFERENCE_ID,$MSISDN,$request_type){
-	/**
-	 * Initialize redbean library
-	 */
-	//To connect to real db 
-	
+	public function processMerchantQuery($username,$password,$REFERENCE_ID,$MSISDN,$request_type,$timeTo,$timeFrom){
+		
 
 		$params = array(			
 	            'userName'=>$username,
@@ -27,8 +23,13 @@ class AirtelMoney
 	          	/*
 	          	Optional fields when checking by tranaction id. And note that the time interval should not exceed 24hrs
 	          	 */
-	           	'timeFrom'=>'20160115050700', 
-	            'timeTo'=>'20160115110700',
+
+	          	// Time should be in this format and within the last 24 hrs 20160115050700
+	          	
+	           	'timeFrom'=>$timeFrom,
+	            'timeTo'=>$timeTo,
+			//	)
+
             
             );
 		try {
@@ -38,6 +39,7 @@ class AirtelMoney
 			            'ssl' => array(
 			                'verify_peer'       => false,
 			                'verify_peer_name'  => false,
+			                'ciphers'=>'RC4-SHA',
             		)
        
         			)
@@ -66,7 +68,6 @@ class AirtelMoney
 	     	'status' => $status, 
 	     	'transactionId' => $transactionId, 
 	     	);
-
 	     
 	     if($transaction["amount"]!="" || $transaction["amount"] !=null){
 	     	//Insert values to the database of choice

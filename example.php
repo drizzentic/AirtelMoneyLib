@@ -7,7 +7,7 @@ require_once('config/Constant.php');
 require_once('lib/AirtelMoney.php');
 
 
-$Password=Constant::generateHash();
+
 $airtelclient=new AirtelMoney;
 
 //Call the processing function with parameters as shown
@@ -21,7 +21,10 @@ $airtelclient=new AirtelMoney;
  * $timeFrom=$_POST['timeFrom'];
  * $timeTo=$_POST['timeTo'];
  */
-$airtelclient->processMerchantQuery("","","","",REQUEST1);
+$referenceId="1601056579194";
+$timeTo="";
+$timeFrom="";
+$airtelclient->processMerchantQuery(USERNAME,PASSWORD,$referenceId,MSISDN,REQUEST1,$timeTo,$timeFrom);
 
 
 ?>
